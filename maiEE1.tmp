@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cvjd65ayfcho"]
+
+[ext_resource type="PackedScene" uid="uid://dghrs268yapw" path="res://raft.tscn" id="1_gxhuv"]
+
+[node name="Main" type="Node2D"]
+
+[node name="Raft" parent="." instance=ExtResource("1_gxhuv")]
+position = Vector2(585, 328)

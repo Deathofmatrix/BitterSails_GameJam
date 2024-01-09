@@ -1,0 +1,59 @@
+[gd_scene load_steps=11 format=3 uid="uid://dghrs268yapw"]
+
+[ext_resource type="Script" path="res://player_state_machine/player.gd" id="1_2jdav"]
+[ext_resource type="PackedScene" uid="uid://b3ecqnv5q7uxl" path="res://tile.tscn" id="2_h35jj"]
+[ext_resource type="Texture2D" uid="uid://ude0coj8klr" path="res://icon.svg" id="2_hra73"]
+[ext_resource type="Script" path="res://FishingHook.gd" id="3_k31a0"]
+[ext_resource type="Script" path="res://player_state_machine/state_machine.gd" id="5_7jhmu"]
+[ext_resource type="Script" path="res://player_state_machine/states/idle.gd" id="6_imbbl"]
+[ext_resource type="Script" path="res://player_state_machine/states/cast.gd" id="7_e8ii4"]
+[ext_resource type="Script" path="res://player_state_machine/states/reel_in.gd" id="8_ixfny"]
+[ext_resource type="Script" path="res://player_state_machine/states/place_tile.gd" id="9_dkkgx"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vb58i"]
+radius = 2.0
+
+[node name="Player" type="Node2D"]
+script = ExtResource("1_2jdav")
+
+[node name="animations" type="AnimationPlayer" parent="."]
+
+[node name="fishing_line" type="Line2D" parent="."]
+points = PackedVector2Array(0, 0, 100, 0)
+width = 2.0
+end_cap_mode = 2
+
+[node name="FishingHook" type="Area2D" parent="fishing_line"]
+collision_layer = 2
+script = ExtResource("3_k31a0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="fishing_line/FishingHook"]
+shape = SubResource("CircleShape2D_vb58i")
+
+[node name="Sprite2D" type="Sprite2D" parent="fishing_line/FishingHook"]
+position = Vector2(-2.98023e-08, -2.98023e-08)
+scale = Vector2(0.03125, 0.03125)
+texture = ExtResource("2_hra73")
+
+[node name="Tile" parent="." groups=["connected_tile"] instance=ExtResource("2_h35jj")]
+
+[node name="state_machine" type="Node" parent="." node_paths=PackedStringArray("starting_state")]
+script = ExtResource("5_7jhmu")
+starting_state = NodePath("idle")
+
+[node name="idle" type="Node" parent="state_machine" node_paths=PackedStringArray("cast_state")]
+script = ExtResource("6_imbbl")
+cast_state = NodePath("../cast")
+
+[node name="cast" type="Node" parent="state_machine" node_paths=PackedStringArray("reel_in_state")]
+script = ExtResource("7_e8ii4")
+reel_in_state = NodePath("../reel_in")
+
+[node name="reel_in" type="Node" parent="state_machine" node_paths=PackedStringArray("place_tile_state")]
+script = ExtResource("8_ixfny")
+place_tile_state = NodePath("../place_tile")
+
+[node name="place_tile" type="Node" parent="state_machine"]
+script = ExtResource("9_dkkgx")
+
+[connection signal="body_entered" from="fishing_line/FishingHook" to="." method="_on_fishing_hook_body_entered"]

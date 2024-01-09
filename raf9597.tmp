@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://dghrs268yapw"]
+
+[ext_resource type="Script" path="res://raft.gd" id="1_rjqai"]
+[ext_resource type="Texture2D" uid="uid://ude0coj8klr" path="res://icon.svg" id="2_hra73"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t2ey8"]
+size = Vector2(128, 128)
+
+[node name="Raft" type="Node2D" node_paths=PackedStringArray("fishing_line")]
+script = ExtResource("1_rjqai")
+fishing_line = NodePath("FishingLine")
+
+[node name="Tile" type="Node2D" parent="."]
+
+[node name="RigidBody2D" type="RigidBody2D" parent="Tile"]
+gravity_scale = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tile/RigidBody2D"]
+shape = SubResource("RectangleShape2D_t2ey8")
+
+[node name="Sprite2D" type="Sprite2D" parent="Tile/RigidBody2D"]
+texture = ExtResource("2_hra73")
+
+[node name="FishingLine" type="Line2D" parent="."]
+points = PackedVector2Array(0, 0, 0, 0)
