@@ -5,8 +5,11 @@
 
 [node name="Main" type="Node2D"]
 
-[node name="Raft" parent="." instance=ExtResource("1_gxhuv")]
-position = Vector2(152, 87)
+[node name="Player" parent="." instance=ExtResource("1_gxhuv")]
+position = Vector2(160, 80)
 
 [node name="Tile" parent="." groups=["loose_tiles"] instance=ExtResource("2_8xhxs")]
 position = Vector2(75, 133)
+
+[node name="Tile2" parent="." groups=["loose_tiles"] instance=ExtResource("2_8xhxs")]
+position = Vector2(103, 117)

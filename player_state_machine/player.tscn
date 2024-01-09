@@ -35,7 +35,9 @@ position = Vector2(-2.98023e-08, -2.98023e-08)
 scale = Vector2(0.03125, 0.03125)
 texture = ExtResource("2_hra73")
 
-[node name="Tile" parent="." groups=["connected_tile"] instance=ExtResource("2_h35jj")]
+[node name="connected_tiles" type="Node2D" parent="."]
+
+[node name="Tile" parent="connected_tiles" groups=["connected_tile"] instance=ExtResource("2_h35jj")]
 
 [node name="state_machine" type="Node" parent="." node_paths=PackedStringArray("starting_state")]
 script = ExtResource("5_7jhmu")
@@ -49,11 +51,13 @@ cast_state = NodePath("../cast")
 script = ExtResource("7_e8ii4")
 reel_in_state = NodePath("../reel_in")
 
-[node name="reel_in" type="Node" parent="state_machine" node_paths=PackedStringArray("place_tile_state")]
+[node name="reel_in" type="Node" parent="state_machine" node_paths=PackedStringArray("place_tile_state", "idle_state")]
 script = ExtResource("8_ixfny")
 place_tile_state = NodePath("../place_tile")
+idle_state = NodePath("../idle")
 
-[node name="place_tile" type="Node" parent="state_machine"]
+[node name="place_tile" type="Node" parent="state_machine" node_paths=PackedStringArray("idle_state")]
 script = ExtResource("9_dkkgx")
+idle_state = NodePath("../idle")
 
 [connection signal="body_entered" from="fishing_line/FishingHook" to="." method="_on_fishing_hook_body_entered"]

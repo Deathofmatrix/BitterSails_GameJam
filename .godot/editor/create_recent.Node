@@ -1,3 +1,4 @@
+Node2D
 TileMap
 AnimationPlayer
 Node
@@ -7,4 +8,3 @@ CollisionShape2D
 Area2D
 Line2D
 RigidBody2D
-Node2D

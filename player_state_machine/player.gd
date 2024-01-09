@@ -1,14 +1,12 @@
 class_name Player
 extends Node2D
 
-@onready
-var animations = $animations
+var current_tile: StaticBody2D
 
-@onready
-var fishing_line = $fishing_line
-
-@onready
-var state_machine = $state_machine
+@onready var connected_tiles = $connected_tiles
+@onready var animations = $animations
+@onready var fishing_line = $fishing_line
+@onready var state_machine = $state_machine
 
 func _ready() -> void:
 	# Initialize the state machine, passing a reference of the player to the states,
