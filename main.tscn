@@ -13,3 +13,9 @@ position = Vector2(75, 133)
 
 [node name="Tile2" parent="." groups=["loose_tiles"] instance=ExtResource("2_8xhxs")]
 position = Vector2(103, 117)
+
+[node name="Tile3" parent="." groups=["loose_tiles"] instance=ExtResource("2_8xhxs")]
+position = Vector2(52, 74)
+
+[node name="Tile4" parent="." groups=["loose_tiles"] instance=ExtResource("2_8xhxs")]
+position = Vector2(162, 158)
