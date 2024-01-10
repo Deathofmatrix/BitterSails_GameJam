@@ -14,6 +14,7 @@ func exit() -> void:
 func process_input(event: InputEvent) -> State:
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+			if not parent.current_tile.is_snapped: return null
 			print("clicked")
 			parent.current_tile.add_to_group("connected_tile")
 			parent.current_tile.remove_from_group("loose_tiles")
@@ -37,6 +38,7 @@ func process_physics(delta: float) -> State:
 	for pos in parent.empty_space_positions:
 		if grid_pos == pos:
 			parent.current_tile.position = pos
+			parent.current_tile.is_snapped = true
 	
 	return null
 

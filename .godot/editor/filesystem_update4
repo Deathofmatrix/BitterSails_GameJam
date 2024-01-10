@@ -1,4 +1,5 @@
-res://main.tscn
 res://player_state_machine/player.tscn
-res://player_state_machine/player.gd
 res://player_state_machine/states/place_tile.gd
+res://player_state_machine/player.gd
+res://main.tscn
+res://tile.tscn

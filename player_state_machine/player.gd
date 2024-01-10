@@ -1,7 +1,7 @@
 class_name Player
 extends Node2D
 
-var current_tile: StaticBody2D
+var current_tile: Tile
 var placed_tile_positions: Array[Vector2]
 var empty_space_positions: Array[Vector2]
 
