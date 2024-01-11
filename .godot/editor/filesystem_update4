@@ -1,5 +1,9 @@
-res://player_state_machine/player.tscn
-res://player_state_machine/states/place_tile.gd
-res://player_state_machine/player.gd
 res://main.tscn
+res://player_state_machine/player.tscn
 res://tile.tscn
+res://player_state_machine/player.gd
+res://tile.gd
+res://player_state_machine/states/place_tile.gd
+res://player_state_machine/states/cast.gd
+res://player_state_machine/states/idle.gd
+res://player_state_machine/states/reel_in.gd

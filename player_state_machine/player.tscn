@@ -19,7 +19,8 @@ script = ExtResource("1_2jdav")
 [node name="animations" type="AnimationPlayer" parent="."]
 
 [node name="fishing_line" type="Line2D" parent="."]
-points = PackedVector2Array(0, 0, 100, 0)
+visible = false
+points = PackedVector2Array(0, 0, 0, 0)
 width = 2.0
 end_cap_mode = 2
 
@@ -61,3 +62,5 @@ script = ExtResource("9_dkkgx")
 idle_state = NodePath("../idle")
 
 [connection signal="body_entered" from="fishing_line/FishingHook" to="." method="_on_fishing_hook_body_entered"]
+[connection signal="mouse_entered_tile" from="connected_tiles/Tile" to="." method="_on_tile_mouse_entered_tile"]
+[connection signal="mouse_exited_tile" from="connected_tiles/Tile" to="." method="_on_tile_mouse_exited_tile"]

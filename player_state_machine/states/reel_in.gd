@@ -7,6 +7,7 @@ var is_hooked: bool
 var tile_on_hook: StaticBody2D
 
 func exit() -> void:
+	parent.fishing_line.hide()
 	parent.fishing_line.set_point_position(1, parent.fishing_line.get_point_position(0))
 
 

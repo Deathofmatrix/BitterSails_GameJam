@@ -3,6 +3,9 @@ extends State
 @export var reel_in_state: State
 
 
+func enter() -> void:
+	parent.fishing_line.show()
+
 func process_input(event: InputEvent) -> State:
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
@@ -13,5 +16,4 @@ func process_input(event: InputEvent) -> State:
 	return null
 
 func cast_line(pos: Vector2):
-	parent.fishing_line.set_point_position(0, Vector2(0,0))
 	parent.fishing_line.set_point_position(1, pos)

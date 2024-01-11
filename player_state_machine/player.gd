@@ -2,6 +2,8 @@ class_name Player
 extends Node2D
 
 var current_tile: Tile
+var hovered_tile: Vector2
+var is_hovering_tile: bool = false
 var placed_tile_positions: Array[Vector2]
 var empty_space_positions: Array[Vector2]
 
@@ -31,3 +33,16 @@ func _process(delta: float) -> void:
 
 func _on_fishing_hook_body_entered(body):
 	state_machine.fishing_hook_body_entered(body)
+
+
+
+func _on_tile_mouse_entered_tile(pos):
+	is_hovering_tile = true
+	hovered_tile = pos
+	print("enter")
+
+
+func _on_tile_mouse_exited_tile(pos):
+	if hovered_tile == pos:
+		is_hovering_tile = false
+	print("exit")

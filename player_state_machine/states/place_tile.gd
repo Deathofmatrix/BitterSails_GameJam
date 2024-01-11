@@ -8,6 +8,8 @@ func enter() -> void:
 
 
 func exit() -> void:
+	parent.current_tile.connect("mouse_entered_tile", parent._on_tile_mouse_entered_tile)
+	parent.current_tile.connect("mouse_exited_tile", parent._on_tile_mouse_exited_tile)
 	add_tile_to_array(parent.current_tile.position)
 
 
